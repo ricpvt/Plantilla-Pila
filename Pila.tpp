@@ -13,15 +13,15 @@ Pila<T>::~Pila(){
 template <typename T>
 Pila<T>::Pila(const Pila<T>& p) : tope(nullptr){
     if (p.tope) {
-        Elemento * aux = p.tope;
-        Elemento * nuevoTope = new Elemento (aux->valor);
+        Elemento * actual = p.tope;
+        Elemento * nuevoTope = new Elemento (actual->valor);
         tope = nuevoTope;
-        aux = aux->siguiente;
+        actual = actual->siguiente;
 
-        while (aux != nullptr) {
-            nuevoTope->siguiente = new Elemento (aux->valor);
+        while (actual != nullptr) {
+            nuevoTope->siguiente = new Elemento (actual->valor);
             nuevoTope = nuevoTope->siguiente;
-            aux = aux->siguiente;
+            actual = actual->siguiente;
         }
     }
     *this = p;
@@ -32,15 +32,15 @@ Pila<T>& Pila<T>::operator=(const Pila<T>& p){
     if (this != &p){
         Vaciar();
         if(p.tope != nullptr){
-            Elemento * aux1 = p.tope;
-            Elemento * aux2 = new Elemento(aux1 -> valor);
-            tope = aux2;
-            aux1 = aux1 -> siguiente;
+            Elemento * actualPila = p.tope;
+            Elemento * nuevoTope = new Elemento(actualPila -> valor);
+            tope = nuevoTope;
+            actualPila = actualPila -> siguiente;
 
-            while(aux1 != nullptr){
-                aux2 -> siguiente = new Elemento(aux1 -> valor);
-                aux2 = aux2 -> siguiente;
-                aux1 = aux1 -> siguiente;
+            while(actualPila  != nullptr){
+                nuevoTope -> siguiente = new Elemento(actualPila -> valor);
+                nuevoTope = nuevoTope -> siguiente;
+                actualPila = actualPila -> siguiente;
             }
         }
     }
